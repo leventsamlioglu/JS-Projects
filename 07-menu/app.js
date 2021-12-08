@@ -71,4 +71,70 @@ const menu = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
+  {
+    id: 10,
+    title: "bison steak",
+    category: "dinner",
+    price: 22.99,
+    img: "./images/item-10.jpeg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
 ];
+
+const sectionCenter = document.querySelector(".section-center");
+const btnContainer = document.querySelector(".btn-container");
+
+window.addEventListener("DOMContentLoaded", function () {
+  displayMenuItems(menu);
+  displayMenuButtons();
+});
+
+function displayMenuItems(menuItems) {
+  let displayMenu = menuItems.map((item) => {
+    return `<article class="menu-item">
+<img src="${item.img}" alt="${item.title}" class="photo" />
+<div class="item-info">
+  <header>
+    <h4>${item.title}</h4>
+    <h4 class="price">${item.price}</h4>
+  </header>
+  <p class="item-text">
+    ${item.desc}
+  </p>
+</div>
+</article>`;
+  });
+  displayMenu = displayMenu.join("");
+  sectionCenter.innerHTML = displayMenu;
+}
+
+function displayMenuButtons() {
+  let categories = menu.map((item) => {
+    return item.category;
+  });
+  categories = Array.from(new Set(categories));
+  categories.push("all");
+  categories.sort();
+
+  const categoryBtns = categories
+    .map((category) => {
+      return `<button type="button" class="filter-btn" data-id=${category}>
+    ${category}
+  </button>`;
+    })
+    .join("");
+
+  btnContainer.innerHTML = categoryBtns;
+
+  const filteredBtns = btnContainer.querySelectorAll(".filter-btn");
+  filteredBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const category = e.currentTarget.dataset.id;
+      const menuCategory = menu.filter((menuItem) => {
+        if (menuItem.category === category) return menuItem;
+      });
+      if (category === "all") displayMenuItems(menu);
+      else displayMenuItems(menuCategory);
+    });
+  });
+}
