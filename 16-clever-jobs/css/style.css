@@ -135,6 +135,7 @@ header {
 .top img {
   width: 50px;
   height: 50px;
+  border-radius: 10px;
 }
 
 .rolename {
@@ -150,6 +151,7 @@ header {
   overflow: hidden;
   font-size: 18px;
   color: #969398;
+  flex-grow: 1;
 }
 
 .buttons {
@@ -174,4 +176,16 @@ header {
   color: white;
   background-color: #3060ff;
   margin-right: 15px;
+}
+
+@media screen and (max-width: 930px) {
+  .jobs-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .jobs-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
