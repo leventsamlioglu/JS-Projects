@@ -6,12 +6,10 @@ document.querySelector(".button-container").addEventListener("click", () => {
   });
 });
 
-function getJobs() {
-  return fetch("data.json")
-    .then((response) => response.json())
-    .then((data) => {
-      return data;
-    });
+async function getJobs() {
+  const response = await fetch("data.json");
+  const data = await response.json();
+  return data;
 }
 
 function filterJobs(jobs, searchText) {
