@@ -537,7 +537,7 @@
     this.resizeClear = !!(opts && opts.resizeClear);
   };
 
-  Skycons.CLEAR_DAY = function (ctx, t, color) {
+  Skycons.CLEAR_SKY = function (ctx, t, color) {
     var w = ctx.canvas.width,
       h = ctx.canvas.height,
       s = Math.min(w, h);
@@ -553,7 +553,7 @@
     moon(ctx, t, w * 0.5, h * 0.5, s, s * STROKE, color);
   };
 
-  Skycons.PARTLY_CLOUDY_DAY = function (ctx, t, color) {
+  Skycons.FEW_CLOUDS = function (ctx, t, color) {
     var w = ctx.canvas.width,
       h = ctx.canvas.height,
       s = Math.min(w, h);
