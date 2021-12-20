@@ -1,3 +1,5 @@
+let h1 = document.querySelector(".jobs-list h1").innerHTML;
+
 document.querySelector(".button-container").addEventListener("click", () => {
   let text = document.getElementById("filter-jobs").value;
   getJobs().then((jobs) => {
@@ -26,6 +28,9 @@ function filterJobs(jobs, searchText) {
         return false;
       }
     });
+    document.querySelector(
+      ".jobs-list h1"
+    ).innerHTML = `Showing ${filteredJobs.length} Jobs`;
     return filteredJobs;
   } else {
     return jobs;
@@ -60,4 +65,7 @@ function showJobs(jobs) {
 
 getJobs().then((data) => {
   showJobs(data);
+  document.querySelector(
+    ".jobs-list h1"
+  ).innerHTML = `Showing ${data.length} Jobs`;
 });
