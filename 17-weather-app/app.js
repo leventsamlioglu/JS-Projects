@@ -20,7 +20,6 @@ window.addEventListener("load", () => {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
           let temp = data.main.temp;
           let summary = data.weather[0].main;
           let timezone = data.name;
@@ -54,10 +53,7 @@ window.addEventListener("load", () => {
 
   function setIcons(icon, iconID) {
     const skycons = new Skycons({ color: "white" });
-    console.log("skycons", skycons);
     const currentIcon = icon.replace(/-g/, "_").toUpperCase();
-    console.log("currentIcon", currentIcon);
-
     skycons.play();
     return skycons.set(iconID, Skycons[currentIcon]);
   }
